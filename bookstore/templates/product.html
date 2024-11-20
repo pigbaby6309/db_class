@@ -12,7 +12,8 @@
 <br/>
 <div class="row">
 <div class="card" style="width: 20rem;margin-left:5%">
-  <img src={{ url_for('static', filename = temp  ) }} class="card-img-top">
+  <!--<img src={{ url_for('static', filename = temp  ) }} class="card-img-top"> -->
+  <img src={{ data.商品圖片 }}  width="256" height="280" class="card-img-top">
   <div class="card-body">
     <h5 class="card-title">{{ data.商品名稱 }}</h5>
     <p class="card-text"></p>

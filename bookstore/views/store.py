@@ -70,7 +70,8 @@ def bookstore():
         price = data[5]
         author = data[3]
         description = data[2]
-        image = 'sdg.jpg'
+        #image = 'sdg.jpg'
+        image  = data[8]
         
         product = {
             '商品編號': pid,
