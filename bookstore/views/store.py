@@ -96,7 +96,9 @@ def bookstore():
             book = {
                 '商品編號': i[0],
                 '商品名稱': i[1],
-                '商品價格': i[5]
+                '商品簡介': i[2],
+                '商品價格': i[5],
+                '圖片網址': i[8]
             }
             book_data.append(book)
             
@@ -122,7 +124,9 @@ def bookstore():
             book = {
                 '商品編號': i[0],
                 '商品名稱': i[1],
-                '商品價格': i[5]
+                '商品簡介': i[2],
+                '商品價格': i[5],
+                '圖片網址': i[8]               
             }
 
             book_data.append(book)
@@ -143,7 +147,9 @@ def bookstore():
             book = {
                 '商品編號': i[0],
                 '商品名稱': i[1],
+                '商品簡介': i[2],
                 '商品價格': i[5],
+                '圖片網址': i[8]
             }
             if len(book_data) < 9:
                 book_data.append(book)

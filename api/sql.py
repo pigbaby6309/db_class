@@ -11,11 +11,11 @@ class DB:
        host='140.117.68.66',
        port='5432',
        dbname='project_10'
-#      user='postgres',
-#      password='postgres',
-#      host='localhost',
-#      port='5432',
-#      dbname='project_10'
+#       user='postgres',
+#       password='postgres',
+#       host='localhost',
+#       port='5432',
+#       dbname='project_10'
     )
 
     @staticmethod
@@ -195,12 +195,12 @@ class Product:
     @staticmethod
     def get_all_product():
         #只選擇有庫存的資料
-        sql = 'SELECT * FROM product where prd_stock >0' 
+        sql = 'SELECT * FROM product where prd_stock >0 order by prd_no' 
         return DB.fetchall(sql)
     
     def get_all_product_2():
         #只選擇有庫存的資料
-        sql = 'SELECT * FROM product' 
+        sql = 'SELECT * FROM product order by prd_no' 
         return DB.fetchall(sql)
 
     @staticmethod
@@ -213,9 +213,9 @@ class Product:
         #sql = 'INSERT INTO product (pid, pname, price, category, pdesc) VALUES (%s, %s, %s, %s, %s)'
         #DB.execute_input(sql, (input_data['pid'], input_data['pname'], input_data['price'], input_data['category'], input_data['pdesc']))        
         #sql = 'INSERT INTO product (prd_no, prd_name, prd_author,prd_price, prd_stock, prd_publisher,prd_desc) VALUES (%s, %s, %s, %s, %s, %s, %s)'
-        sql = 'INSERT INTO product (prd_no, prd_name,prd_author,prd_price, prd_stock, prd_publisher,prd_desc) VALUES (%s, %s, %s, %s, %s, %s, %s)'
+        sql = 'INSERT INTO product (prd_no, prd_name,prd_author,prd_price, prd_stock, prd_publisher,prd_desc,prd_img) VALUES (%s, %s, %s, %s, %s, %s, %s,%s)'
         DB.execute_input(sql, (input_data['prd_no'],input_data['prd_name'],input_data['prd_author'],input_data['prd_price'],\
-                               input_data['prd_stock'],input_data['prd_publisher'],input_data['prd_desc']))
+                               input_data['prd_stock'],input_data['prd_publisher'],input_data['prd_desc'],input_data['prd_img']))
 
     @staticmethod
     def delete_product(prd_no):
@@ -226,9 +226,9 @@ class Product:
     def update_product(input_data):
         #sql = 'UPDATE product SET pname = %s, price = %s, category = %s, pdesc = %s WHERE pid = %s'
         #DB.execute_input(sql, (input_data['pname'], input_data['price'], input_data['category'], input_data['pdesc'], input_data['prd_no']))
-        sql='UPDATE product SET prd_name = %s,prd_author = %s,prd_price = %s,prd_stock = %s,prd_publisher = %s,prd_desc = %s WHERE prd_no = %s'
+        sql='UPDATE product SET prd_name = %s,prd_author = %s,prd_price = %s,prd_stock = %s,prd_publisher = %s,prd_desc = %s,prd_img = %s WHERE prd_no = %s'
         DB.execute_input(sql, (input_data['pname'],input_data['author'],input_data['price'],input_data['stock'],\
-                               input_data['publisher'],input_data['pdesc'],input_data['pid']))
+                               input_data['publisher'],input_data['pdesc'],input_data['img'],input_data['pid']))
 
 
 class Record:

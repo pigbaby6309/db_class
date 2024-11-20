@@ -63,8 +63,8 @@ def book():
             '商品售價': i[5],
             '作者': i[3],
             '庫存': i[4],
-            '供應商': i[6]
-            
+            '供應商': i[6],
+            '圖片網址': i[8]
         }
         book_data.append(book)
     return book_data
@@ -85,6 +85,7 @@ def add():
         prd_stock = request.values.get('prd_stock')
         prd_publisher= request.values.get('prd_publisher')
         prd_desc = request.values.get('description')
+        prd_img = request.values.get('prd_img')
         
         # 檢查是否正確獲取到所有欄位的數據
         #if prd_name is None or prd_price is None or prd_author is None or prd_stock is None or prd_publisher is None or prd_desc is None:
@@ -96,7 +97,6 @@ def add():
             #flash('商品名稱或價格不可為空。')
             #return redirect(url_for('manager.productManager'))
 
-        flash('bbb')
         Product.add_product(
             {'prd_no' : prd_no,
              'prd_name' : prd_name,
@@ -104,7 +104,9 @@ def add():
              'prd_author' : prd_author,             
              'prd_stock' : prd_stock,
              'prd_publisher' : prd_publisher,
-             'prd_desc':prd_desc
+             'prd_desc':prd_desc,
+             'prd_img':prd_img
+
             }
         )
         flash('You were successfully logged in')
@@ -130,7 +132,9 @@ def edit():
             'stock' : request.values.get('stock'), 
             'pdesc' : request.values.get('description'),
             'publisher' : request.values.get('publisher'),
-            'pid' : request.values.get('pid')
+            'pid' : request.values.get('pid'),
+            'img' : request.values.get('prd_img')
+
             }
         )
         
@@ -150,6 +154,7 @@ def show_info():
     stock = data[4]
     publisher =data[6]
     description = data[2]
+    image= data[8]
 
     product = {
         '商品編號': pid,
@@ -158,7 +163,8 @@ def show_info():
         '庫存': stock,
         '作者': author,
         '出版商': publisher,
-        '商品敘述': description
+        '商品敘述': description,
+        '圖片網址': image
     }
     return product
 #--------------------------------------------
